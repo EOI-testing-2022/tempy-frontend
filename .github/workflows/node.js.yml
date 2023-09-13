@@ -18,9 +18,9 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm test
-      - run: npm build
+      - run: npm run build
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          build: npm build
+          build: npm run build
           start: npm start
