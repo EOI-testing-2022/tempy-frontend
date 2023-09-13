@@ -10,6 +10,11 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    services:
+        api:
+          image: ghcr.io/eoi-testing-2022/tempy-backend
+          ports:
+            - "3000:3000"
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
