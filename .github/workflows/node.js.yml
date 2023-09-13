@@ -26,7 +26,7 @@ jobs:
       - test
     services:
       api:
-        image: ghcr.io/eoi-testing-2022/tempy-backend
+        image: ghcr.io/eoi-testing-2022/tempy-backend:main
         credentials:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_IMAGE_PULL_TOKEN }}
