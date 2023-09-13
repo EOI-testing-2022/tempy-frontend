@@ -6,9 +6,11 @@ export class TemperatureService {
   }
 
   async getTemperature() {
-    const response = await this.fetch(
-      `${this.baseUrl}/temperature?ip=127.0.0.1`,
-    );
+    const response = await this.fetch(`${this.baseUrl}/temperature`);
+
+    if (!response.ok) {
+      throw new Error("Could not get temperature");
+    }
 
     const data = await response.json();
 
