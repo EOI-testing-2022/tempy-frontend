@@ -1,17 +1,18 @@
 import { toEmoji, toLabel } from "../models/Temperature.js";
 import PropTypes from "prop-types";
 
-export const CurrentTemperature = ({ temperature }) => {
+export const CurrentTemperature = ({ temperature, country }) => {
   const label = `Current weather is ${toLabel(temperature)}`;
 
   return (
     <div className="current-temperature">
       <h1 aria-label={label}>{toEmoji(temperature)}</h1>
-      <p>Current temperature is {temperature ?? "-"} ºC</p>
+      <p>Current temperature is {temperature ?? "-"} ºC {country ? `in ${country}` : ''}</p>
     </div>
   );
 };
 
 CurrentTemperature.propTypes = {
   temperature: PropTypes.number,
+  country: PropTypes.string,
 };
