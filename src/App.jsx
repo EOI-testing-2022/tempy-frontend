@@ -15,6 +15,7 @@ export const App = () => {
   const [fromUnit, setFromUnit] = useState(TemperatureUnit.CELSIUS);
   const [toUnit, setToUnit] = useState(TemperatureUnit.CELSIUS);
   const [selectedCountry, setSelectedCountry] = useState(Countries.SPAIN);
+  const [selectedCountryText, setSelectedCountryText] = useState('');
   const { temperatureService } = useDependencies();
 
   const result = convert(parseFloat(temperature), fromUnit, toUnit);
@@ -22,6 +23,7 @@ export const App = () => {
   const getTemperature = () => temperatureService.getTemperature({headers: {'x-forwarded-for': CountriesIpsMap[selectedCountry] }}).then((temperature) => {
     setCurrentTemperature(temperature);
     setTemperature(temperature.toString());
+    setSelectedCountryText(selectedCountry)
   });
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export const App = () => {
 
   return (
     <main>
-      <CurrentTemperature temperature={currentTemperature} country={selectedCountry} />
+      <CurrentTemperature temperature={currentTemperature} country={selectedCountryText} />
       <form className="temperature-form">
         <SelectUnit
           id="temperature-from"
