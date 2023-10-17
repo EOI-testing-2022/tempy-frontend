@@ -17,7 +17,7 @@ export const App = () => {
   const result = convert(parseFloat(temperature), fromUnit, toUnit);
 
   useEffect(() => {
-    temperatureService.getTemperature().then((temperature) => {
+    temperatureService.getTemperature({headers: {'x-forwarded-for': '50.2.62.232'}}).then((temperature) => {
       setCurrentTemperature(temperature);
       setTemperature(temperature.toString());
     });
